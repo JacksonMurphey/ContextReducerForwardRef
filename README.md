@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# Built Small Test App To:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Work with useContext, useReducer, useRef, useImperativeHandle, and React.forwardRef
 
-## Available Scripts
+## Created a Store
 
-In the project directory, you can run:
+In My Store, I createdContext = AuthContext. This object holds my state objects and functions.
+I also created a AuthContextProvider to wrap my App in, so I would have access, app-wide, to my context. 
 
-### `npm start`
+### Worked with LocalStorage to Control state objects
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Created a loggedIn item to store in localStorage, which I would check initially to see if this value was stored, thus allowing a user to login, leave the page, then return where they left off. Then upon logout, I would remove this item from local storage.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Created a Reusable Input component that implemented React.forwardRef and useImperativeHandle
 
-### `npm test`
+This allowed for me to create and control Refs from my parent component for inputs that initially did not have Refs. This was directly used to allow for a focus() method to be used to direct the user to the input that was not valid when trying to login.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Debouncing inside my useEffect
 
-### `npm run build`
+In order to prevent my useEffect from running on every keystroke, for every input, I wanted to debounce my data to delay the number of times it would have to check to see if anything had changed for a given input. This helps my program be more efficient and would save on the number of calls to a server that the program has to make.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Made a loginReducer
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This reducer checks the validity of the payload its being sent, and updates my values if they return valid. As well, when a user loses focus on a given input, 'onBlur', I have my reducer run again to check if what they input is valid. This reducer runs onSubmit, and onBlur.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
